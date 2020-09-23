@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1600813185 source:c:\users\elshahat\downloads\simpletron-master\simpletron-master\simpletron\simp\main.c
+	<stdio.h>
+
+1600902962 source:c:\users\elshahat\downloads\simpletron-master\simpletron-master\simpletron\simp\simpletron_ui.c
+	"Simpletron_UI.h"
+
+1600767123 c:\users\elshahat\downloads\simpletron-master\simpletron-master\simpletron\simp\simpletron_ui.h
+	"SML_exe.h"
+
+1600900206 c:\users\elshahat\downloads\simpletron-master\simpletron-master\simpletron\simp\sml_exe.h
+
+1600902873 source:c:\users\elshahat\downloads\simpletron-master\simpletron-master\simpletron\simp\sml_exe.c
+	"SML_exe.h"
+	<stdio.h>
+
