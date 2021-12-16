@@ -1,8 +1,6 @@
-
+#include <stdio.h>
 #include "Simpletron_UI.h"
-
-int main()
-{
-	Run_Program();
-	return 0;
+int main() {
+    Run_Program();
+    return 0;
 }

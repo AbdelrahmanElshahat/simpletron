@@ -3,7 +3,7 @@
 #define _SML_EXE_h
 #define MEMORY_SIZE 100
 FILE *pFile;
-char *file_name = NULL;
+//char *file_name = NULL;
 typedef enum _istruction_set_t{
 	READ = 10,
 	WRITE = 11,

@@ -21,7 +21,10 @@ void Run()
 		Fetch(memory,&registers);
 		Decode(&registers,&opCode,&operand);
 		Execute(&registers,memory, opCode, operand ,&error);
-        dumpMemory(memory);
+        if(opCode != HALT) {
+            printf("The Conent of Memory at Instruction %d : \n", registers.instructionCounter);
+            dumpMemory(memory);
+        }
         if(error !=0){
                  ErrorHandling(&error);
                     break;
@@ -44,13 +47,13 @@ void Recieve_Instructions(word_t *memory)
                  memory[location] = instruction;
                  location++;
 
-             } else{
+             } /*else{
             printf("\t****Invalid Instruction, Please Renter The Instruction****\n");
-        }
+        }*/
          }
      } else
      {
-         scanf("%c",file_name);
+       /*  scanf("%c",file_name);
          pFile = fopen(file_name, "r");
          while (fscanf(pFile, "%d",&instruction) > 0)
          {
@@ -62,7 +65,7 @@ void Recieve_Instructions(word_t *memory)
                  printf("\t****Invalid Instruction, Please Renter The Instruction****\n");
              }
 
-         }
+         }*/
 
      }
 }
@@ -105,7 +108,7 @@ word_t opcode = instruction/100;
               case HALT :
         return 1;
 
-              case eND/100 :
+              case eND:
         return 1;
 
               default :
@@ -160,7 +163,7 @@ void Read(word_t *memory,word_t operand){
     scanf("%d",&memory[operand]);
 }
 void Write(word_t *memory,word_t operand){
-    printf("console Write: %d\n",memory[operand]);
+    printf("\t\tconsole Write: %d\n",memory[operand]);
 }
 void Load(word_t *memory,word_t operand,registers_t *SMLRegisters){
     (SMLRegisters->accumulator) = memory[operand];
@@ -208,7 +211,7 @@ void BranchZero(word_t *memory,word_t operand,registers_t *SMLRegisters){
 }
 }
 void Halt(){
-	    printf("***  execution of Your Program is Finished Successfully ***\n");
+	    printf("\n\n\n***  execution of Your Program is Finished Successfully ***\n");
 }
 void ErrorHandling(word_t *error){
     switch(*error){
@@ -225,13 +228,13 @@ void ErrorHandling(word_t *error){
     }
 }
 void dumpMemory(word_t *memory) {
-    printf("Here is the Content of The Memory : \n");
+   // printf("Here is the Content of The Memory : \n");
     for (int i = 0; i <MEMORY_SIZE ; i++) {
         if(memory[i] != 0)
-            printf("\tMemory[%d] : %d\n",i , memory[i]);
+            printf("Memory[%d] : %d\n",i , memory[i]);
     }
-    printf("\t****Program loading completed***\n");
-    printf("\t****Program execution will begin*****\n");
+   /* printf("\t****Program loading completed***\n");
+    printf("\t****Program execution will begin*****\n");*/
 }
 int checkHALT(word_t *memory){
     word_t tempopcode;

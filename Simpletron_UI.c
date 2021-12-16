@@ -1,5 +1,4 @@
 #include "Simpletron_UI.h"
-#include <stdio.h>
 
 void Run_Program()
 {
