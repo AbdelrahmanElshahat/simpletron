@@ -14,7 +14,7 @@ void Run()
 
     while(opCode != HALT)
 	{
-        if(checkHALT(memory) == 0){
+       if(checkHALT(memory) == 0){
             printf("***NO HALT INSTRUCTION****\n***Program Terminated***\n");
             break;
         }
@@ -53,8 +53,8 @@ void Recieve_Instructions(word_t *memory)
          }
      } else
      {
-       /*  scanf("%c",file_name);
-         pFile = fopen(file_name, "r");
+       //  scanf("%c",file_name);
+         pFile = fopen("Asem", "r");
          while (fscanf(pFile, "%d",&instruction) > 0)
          {
              if (Istruction_Is_Valid(instruction)) {
@@ -65,7 +65,7 @@ void Recieve_Instructions(word_t *memory)
                  printf("\t****Invalid Instruction, Please Renter The Instruction****\n");
              }
 
-         }*/
+         }
 
      }
 }
