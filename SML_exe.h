@@ -1,9 +1,15 @@
 #include <stdio.h>
+#include <string.h>
 #ifndef _SML_EXE_h
 #define _SML_EXE_h
 #define MEMORY_SIZE 100
+
+
 FILE *pFile;
-//char *file_name = NULL;
+typedef int word_t;
+//word_t instruction;
+int location;
+
 typedef enum _istruction_set_t{
 	READ = 10,
 	WRITE = 11,
@@ -22,15 +28,14 @@ typedef enum _istruction_set_t{
 
 
 
-typedef int word_t;
+
 typedef struct _registers_t{
 	word_t accumulator;
 	word_t instructionCounter;
 	word_t instructionRegister;
 }registers_t;
 
-word_t instruction;
-int location;
+
 void Run();
 int Istruction_Is_Valid(word_t instruction);
 void Recieve_Instructions(word_t *memory);

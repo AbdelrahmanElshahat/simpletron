@@ -37,7 +37,9 @@ void Run()
 
 void Recieve_Instructions(word_t *memory)
 {
-	 instruction = 0;
+    char *path = "\\Users\\abdelrahmanelshahat\\CLionProjects\\Simplemachine\\";
+       char file_name[20] ;
+	 word_t instruction = 0;
 	 location = 0;
      if(choice()==0) {
          while (instruction != eND ) {
@@ -47,22 +49,28 @@ void Recieve_Instructions(word_t *memory)
                  memory[location] = instruction;
                  location++;
 
-             } /*else{
+             } else if(instruction !=-99999){
             printf("\t****Invalid Instruction, Please Renter The Instruction****\n");
-        }*/
+        }
          }
      } else
      {
-       //  scanf("%c",file_name);
-         pFile = fopen("Asem", "r");
-         while (fscanf(pFile, "%d",&instruction) > 0)
+         printf("Enter The file Name : ");
+        scanf("%s",file_name);
+        strcat(path,file_name);
+         printf("%s",path);
+         pFile = fopen(path, "r");
+
+         while ( fscanf(pFile, "%d",&instruction)>0)
          {
+
              if (Istruction_Is_Valid(instruction)) {
                  memory[location] = instruction;
                  location++;
 
-             } else{
+             } else if(instruction !=-99999){
                  printf("\t****Invalid Instruction, Please Renter The Instruction****\n");
+                 break;
              }
 
          }
