@@ -1,8 +1,9 @@
+#include <stdio.h>
 #ifndef _SML_EXE_h
 #define _SML_EXE_h
-
 #define MEMORY_SIZE 100
-
+FILE *pFile;
+char *file_name = NULL;
 typedef enum _istruction_set_t{
 	READ = 10,
 	WRITE = 11,
@@ -51,4 +52,5 @@ void ErrorHandling(word_t *error);
 void Halt();
 void dumpMemory(word_t *memory);
 int checkHALT(word_t *memory);
+int choice();
 #endif

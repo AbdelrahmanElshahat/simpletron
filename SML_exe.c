@@ -11,10 +11,11 @@ void Run()
     word_t error = 0;
 	Recieve_Instructions(memory);
     dumpMemory(memory);
+
     while(opCode != HALT)
 	{
         if(checkHALT(memory) == 0){
-            printf("***NO HALT INSTRUCTION****\n***Program will Terminate***\n");
+            printf("***NO HALT INSTRUCTION****\n***Program Terminated***\n");
             break;
         }
 		Fetch(memory,&registers);
@@ -28,25 +29,42 @@ void Run()
 
 	}
 	printf("Value of the Accumulator : %d\n",registers.accumulator);
+    fclose(pFile);
 }
 
 void Recieve_Instructions(word_t *memory)
 {
 	 instruction = 0;
 	 location = 0;
-	while(instruction != eND)
-	{
-		printf("%2d >>", location);
-		scanf("%d", &instruction);
-		if(Istruction_Is_Valid(instruction))
-		{
-			memory[location] = instruction;
-			location++;
+     if(choice()==0) {
+         while (instruction != eND ) {
+             printf("%2d >>", location);
+             scanf("%d", &instruction);
+             if (Istruction_Is_Valid(instruction)) {
+                 memory[location] = instruction;
+                 location++;
 
-		} /*else{
+             } else{
             printf("\t****Invalid Instruction, Please Renter The Instruction****\n");
-        }*/
-	}
+        }
+         }
+     } else
+     {
+         scanf("%c",file_name);
+         pFile = fopen(file_name, "r");
+         while (fscanf(pFile, "%d",&instruction) > 0)
+         {
+             if (Istruction_Is_Valid(instruction)) {
+                 memory[location] = instruction;
+                 location++;
+
+             } else{
+                 printf("\t****Invalid Instruction, Please Renter The Instruction****\n");
+             }
+
+         }
+
+     }
 }
 int Istruction_Is_Valid(word_t instruction){
 word_t opcode = instruction/100;
@@ -87,7 +105,7 @@ word_t opcode = instruction/100;
               case HALT :
         return 1;
 
-              case eND :
+              case eND/100 :
         return 1;
 
               default :
@@ -208,7 +226,7 @@ void ErrorHandling(word_t *error){
 }
 void dumpMemory(word_t *memory) {
     printf("Here is the Content of The Memory : \n");
-    for (int i = 0; i <100 ; i++) {
+    for (int i = 0; i <MEMORY_SIZE ; i++) {
         if(memory[i] != 0)
             printf("\tMemory[%d] : %d\n",i , memory[i]);
     }
@@ -228,7 +246,22 @@ int checkHALT(word_t *memory){
     }
 
 }
+int choice() {
+    printf("0- To Enter Your program\n1- To parse A File\n");
+    int choice;
+    do {
+        printf("Your Choice :");
+        scanf("%d", &choice);
+        if (choice == 0) {
+            return 0;
+        } else if(choice == 1)
+            return 1;
+        printf("Invalid Choice \n0- To Enter Your program\n1- To parse A File\n");
+    }
+        while (choice != 0 || choice != 1);
 
+
+}
 
 
 
