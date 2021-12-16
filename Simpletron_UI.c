@@ -1,4 +1,5 @@
 #include "Simpletron_UI.h"
+#include <stdio.h>
 
 void Run_Program()
 {
@@ -8,11 +9,21 @@ void Run_Program()
 
 void Welcome_Message()
 {
- printf("*** Welcome to the Simpletron! ***\n"
-	  "*** Please enter your program one instruction ***\n"
-	  "*** (or data word) at a time. I will type the ***\n"
-	  "*** location number and a question mark (??).  ***\n"
-	  "*** You then type the word for that location. ***\n"
-	  "*** Type the sentinel -99999 to stop entering ***\n"
-	  "*** your program. ***\n\n");
+    printf("\t**** Welcome to Our Simple Machine\n"
+           "\tOur Program simulates A Machine with this Digital Instruction Set\n"
+           "\tREAD = 10,\n"
+           "\tWRITE = 11,\n"
+           "\tLOAD = 20,\n"
+           "\tSTORE = 21,\n"
+           "\tADD = 30,\n"
+           "\tSUBTRACT = 31,\n"
+           "\tDIVIDE = 32,\n"
+           "\tMULTIPLY = 33,\n"
+           "\tBRANCH = 40,\n"
+           "\tBRANCHNEG = 41,\n"
+           "\tBRANCHZERO = 42,\n"
+           "\tHALT = 43 \n"
+           "\tEnter The Instruction One by One Followed By Memory location in Two Decimal Places \n"
+           "\tAfter Finishing Entering Your program Enter The Value -99999 To Start Execution ****\n"
+           "\nThe Machine will start to Execute The Instructions and Show the output\n\n");
 	  }
