@@ -1,5 +1,5 @@
+#include <malloc.h>
 #include "SML_exe.h"
-#include <stdio.h>
 
 
 void Run()
@@ -24,6 +24,9 @@ void Run()
         if(opCode != HALT) {
             printf("The Conent of Memory at Instruction %d : \n", registers.instructionCounter);
             dumpMemory(memory);
+            printf("\n\n\nValue of the Accumulator : %d\n",registers.accumulator);
+            printf("Value of the Instruction Counter : %d\n",registers.instructionCounter);
+            printf("Value of the Instruction Register : %d\n\n\n\n",registers.instructionRegister);
         }
         if(error !=0){
                  ErrorHandling(&error);
@@ -31,15 +34,15 @@ void Run()
 		}
 
 	}
-	printf("Value of the Accumulator : %d\n",registers.accumulator);
+	//printf("Value of the Accumulator : %d\n",registers.accumulator);
     fclose(pFile);
 }
 
 void Recieve_Instructions(word_t *memory)
 {
-    char *path = "\\Users\\abdelrahmanelshahat\\CLionProjects\\Simplemachine\\";
-       char file_name[20] ;
-	 word_t instruction = 0;
+
+       char f_name[50];
+       word_t instruction = 0;
 	 location = 0;
      if(choice()==0) {
          while (instruction != eND ) {
@@ -56,11 +59,10 @@ void Recieve_Instructions(word_t *memory)
      } else
      {
          printf("Enter The file Name : ");
-        scanf("%s",file_name);
-        strcat(path,file_name);
-         printf("%s",path);
-         pFile = fopen(path, "r");
 
+
+         scanf("%s",f_name);
+         pFile = fopen(f_name, "r");
          while ( fscanf(pFile, "%d",&instruction)>0)
          {
 
@@ -186,10 +188,10 @@ void Add(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error){
         *error=1;
     }
 }
-void Subtract(word_t *memory,word_t operand,registers_t *SMLRegisters){
+void Subtract(const word_t *memory,word_t operand,registers_t *SMLRegisters){
     (SMLRegisters->accumulator)-=memory[operand];
 }
-void Divide(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error){
+void Divide(const word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error){
     if((memory[operand])==0){
         *error=2;
 
@@ -197,7 +199,7 @@ void Divide(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *erro
         (SMLRegisters->accumulator) /= memory[operand];
     }
 }
-void Multiply(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error){
+void Multiply(const word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error){
     (SMLRegisters->accumulator)*=memory[operand];
     if((SMLRegisters->accumulator)>9999){
         *error=3;
@@ -245,12 +247,8 @@ void dumpMemory(word_t *memory) {
     printf("\t****Program execution will begin*****\n");*/
 }
 int checkHALT(word_t *memory){
-    word_t tempopcode;
-    word_t i;
-    for ( i = location-1 ;i<location;i++){
-       tempopcode = memory[i]/100;
-        }
-    if(tempopcode != HALT)
+
+    if(memory[location-1]/100 != HALT)
         return 0;
     else{
         return 1;
@@ -262,7 +260,7 @@ int choice() {
     int choice;
     do {
         printf("Your Choice :");
-        scanf("%d", &choice);
+        scanf("%d",&choice);
         if (choice == 0) {
             return 0;
         } else if(choice == 1)
@@ -273,6 +271,27 @@ int choice() {
 
 
 }
-
+/*void GetLocation(char path[50],char filename[50]){
+    int i = 0,j=0;
+    char * temp;
+    while (path[i] !='\0'){
+        temp[j]=path[i];
+        j++;
+        i++;
+    }
+    i = 0;
+    while(filename[i]!='\0'){
+        temp[j]= filename[i];
+        i++;
+        j++;
+    }
+    temp[j]='\0';
+    i=0;
+    while (temp[i]!='\0'){
+        path[i]=temp[i];
+        i++;
+    }
+    path[i]='\0';
+}*/
 
 

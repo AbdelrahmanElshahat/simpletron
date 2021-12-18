@@ -47,9 +47,9 @@ void Write(word_t *memory,word_t operand);
 void Load(word_t *memory,word_t operand,registers_t *SMLRegisters);
 void Store(word_t *memory,word_t operand,registers_t *SMLRegisters);
 void Add(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error);
-void Subtract(word_t *memory,word_t operand,registers_t *SMLRegisters);
-void Divide(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error);
-void Multiply(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error);
+void Subtract(const word_t *memory,word_t operand,registers_t *SMLRegisters);
+void Divide(const word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error);
+void Multiply(const word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error);
 void Branch(word_t *memory,word_t operand,registers_t *SMLRegisters);
 void Branchng(word_t *memory,word_t operand,registers_t *SMLRegisters);
 void BranchZero(word_t *memory,word_t operand,registers_t *SMLRegisters);
@@ -58,4 +58,5 @@ void Halt();
 void dumpMemory(word_t *memory);
 int checkHALT(word_t *memory);
 int choice();
+
 #endif
