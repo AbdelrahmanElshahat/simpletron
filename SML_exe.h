@@ -58,5 +58,6 @@ void Halt();
 void dumpMemory(word_t *memory);
 int checkHALT(word_t *memory);
 int choice();
+void dump(word_t *memory, registers_t *registers);
 
 #endif

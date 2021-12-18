@@ -1,11 +1,10 @@
-#include <malloc.h>
 #include "SML_exe.h"
 
 
 void Run()
 {
 	word_t memory[MEMORY_SIZE] = {0};
-	registers_t registers = {0, 0, 0};
+    registers_t registers = {0, 0, 0};
 	word_t opCode = 0;
 	word_t operand = 0;
     word_t error = 0;
@@ -23,10 +22,11 @@ void Run()
 		Execute(&registers,memory, opCode, operand ,&error);
         if(opCode != HALT) {
             printf("The Conent of Memory at Instruction %d : \n", registers.instructionCounter);
-            dumpMemory(memory);
+           /* dumpMemory(memory);
             printf("\n\n\nValue of the Accumulator : %d\n",registers.accumulator);
             printf("Value of the Instruction Counter : %d\n",registers.instructionCounter);
-            printf("Value of the Instruction Register : %d\n\n\n\n",registers.instructionRegister);
+            printf("Value of the Instruction Register : %d\n\n\n\n",registers.instructionRegister);*/
+           dump(memory,&registers);
         }
         if(error !=0){
                  ErrorHandling(&error);
@@ -35,6 +35,7 @@ void Run()
 
 	}
 	//printf("Value of the Accumulator : %d\n",registers.accumulator);
+    dump(memory,&registers);
     fclose(pFile);
 }
 
@@ -271,27 +272,36 @@ int choice() {
 
 
 }
-/*void GetLocation(char path[50],char filename[50]){
-    int i = 0,j=0;
-    char * temp;
-    while (path[i] !='\0'){
-        temp[j]=path[i];
-        j++;
-        i++;
-    }
-    i = 0;
-    while(filename[i]!='\0'){
-        temp[j]= filename[i];
-        i++;
-        j++;
-    }
-    temp[j]='\0';
-    i=0;
-    while (temp[i]!='\0'){
-        path[i]=temp[i];
-        i++;
-    }
-    path[i]='\0';
-}*/
+
+void dump(word_t *memory, registers_t *registers)
+{
+    int i; /* counter */
+
+    printf( "\n%s\n%-23s%+05d\n%-23s%5.2d\n%-23s%+05d\n%-23s%5.2d\n%-23s%5.2d", "REGISTERS:", "accumulator", registers->accumulator, "instructioncounter",
+            registers->instructionCounter, "instructionregister", registers->instructionRegister,  "operationcode", (registers->instructionRegister)/100, "operand", (registers->instructionRegister)%100 );
+
+
+    printf("\n\nMEMORY:\n    ");
+
+
+    //print column headers
+    for(i = 0; i <= 9; i++)
+    {
+        printf("%5d ", i);
+    }//end for
+
+
+    //printf row headers and memory contents
+    for(i = 0; i < MEMORY_SIZE; i++)
+    {
+        //print in increments of 10
+        if(i % 10 == 0)
+        {
+            printf("\n%2d ", i);
+        }//end if
+        printf("%+05d ", memory[i]);
+    }//end for
+    printf("\n");
+}//end dump
 
 
