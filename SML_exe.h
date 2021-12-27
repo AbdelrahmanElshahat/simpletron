@@ -7,9 +7,7 @@
 
 FILE *pFile;
 typedef int word_t;
-//word_t instruction;
 int location;
-
 typedef enum _istruction_set_t{
 	READ = 10,
 	WRITE = 11,
@@ -23,6 +21,15 @@ typedef enum _istruction_set_t{
 	BRANCHNEG = 41,
 	BRANCHZERO = 42,
 	HALT = 43,
+    SHIFTRIGHT = 51,
+    SHIFTLEFT = 52,
+    AND = 53,
+    OR = 54,
+    COMPLEMENT =55,
+    ADD_I = 56,
+    SUB_I = 57,
+    DIVIDE_I=58,
+    MULTIPLY_I=59,
     eND = -99999
 }instruction_set_t;
 
@@ -53,11 +60,19 @@ void Multiply(const word_t *memory,word_t operand,registers_t *SMLRegisters,word
 void Branch(word_t *memory,word_t operand,registers_t *SMLRegisters);
 void Branchng(word_t *memory,word_t operand,registers_t *SMLRegisters);
 void BranchZero(word_t *memory,word_t operand,registers_t *SMLRegisters);
+void ShiftRight(word_t *memory ,word_t operand ,registers_t *SMLRegisters);
+void ShiftLift(word_t *memory , word_t operand , registers_t *SMLRegisters);
+void And(word_t *memory , word_t operand , registers_t *SMLRegisters);
+void Or(word_t *memory , word_t operand , registers_t *SMLRegisters);
+void Complement (registers_t *SMLRegisters);
 void ErrorHandling(word_t *error);
 void Halt();
 void dumpMemory(word_t *memory);
 int checkHALT(word_t *memory);
 int choice();
 void dump(word_t *memory, registers_t *registers);
-
+void Add_I(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error);
+void Sub_I(word_t *memory,word_t operand,registers_t *SMLRegisters);
+void Divide_I(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error);
+void Mlutiply_I(word_t *memory,word_t operand,registers_t *SMLRegisters,word_t *error);
 #endif
