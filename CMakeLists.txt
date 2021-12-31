@@ -3,8 +3,12 @@ project(Simplemachine C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Simplemachine main.c
+add_executable(Simplemachine
+        "main.c"
        "Simpletron_UI.c"
         "Simpletron_UI.h"
         "SML_exe.c"
-        "SML_exe.h")
+        "SML_exe.h"
+        "Recive_instructions.c"
+        "Excute.c"
+        "Fetch&Decode.c")

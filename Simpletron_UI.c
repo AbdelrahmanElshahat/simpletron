@@ -2,8 +2,14 @@
 
 void Run_Program()
 {
+    int choose = 0;
 	Welcome_Message();
-	Run();
+    do{
+        Run();
+        printf("\n\nEnter 1 to Run Another program:");
+        scanf("%d",&choose);
+    }while(choose==1);
+
 }
 
 void Welcome_Message()
@@ -21,17 +27,22 @@ void Welcome_Message()
            "\tBRANCH = 40,\n"
            "\tBRANCHNEG = 41,\n"
            "\tBRANCHZERO = 42,\n"
-           "\tSHIFTRIGHT = 51,\n"
-           "\tSHIFTLEFT = 52,\n"
            "\tAND = 53,\n"
            "\tOR = 54,\n"
-           "\tCOMPLEMENT =55,\n"
-           "\tHALT = 43 \n"
+           "\tHALT = 43, \n"
+           "\tADD_I = 56,\n"
+           "\tSUB_I = 57,\n"
+           "\tDIVIDE_I=58,\n"
+           "\tMULTIPLY_I=59,\n"
+           "\tINCREMENT = 60,\n"
+           "\tCLEAR = 61,\n"
+           "\tEND = -99999.\n"
            "\tEnter The Instruction One by One Followed By Memory location in Two Decimal Places \n"
            "\tAfter Finishing Entering Your program Enter The Value -99999 To Start Execution ****\n"
            "\nThe Machine will start to Execute The Instructions and Show the output\n\n");
 	  }
-int choice() {
+      /*Let the user  choose  the operating mode */
+int Choice() {
     printf("0- To Enter Your program\n1- To parse A File\n");
     int choice;
     do {
@@ -46,7 +57,8 @@ int choice() {
     while (choice != 0 || choice != 1);
 
 }
-void dump(word_t *memory, registers_t *registers)
+/*Prints the contents of Memory and Registers*/
+void DumpMemory(word_t *memory, registers_t *registers)
 {
     int i; /* counter */
 
@@ -74,4 +86,4 @@ void dump(word_t *memory, registers_t *registers)
         printf("%+05d ", memory[i]);
     }//end for
     printf("\n");
-}//end dump
+}//end DumpMemory
