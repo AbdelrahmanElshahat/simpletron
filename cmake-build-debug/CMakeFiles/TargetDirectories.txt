@@ -1,3 +1,0 @@
-C:/Users/abdelrahmanelshahat/CLionProjects/Simplemachine/cmake-build-debug/CMakeFiles/Simplemachine.dir
-C:/Users/abdelrahmanelshahat/CLionProjects/Simplemachine/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/abdelrahmanelshahat/CLionProjects/Simplemachine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
