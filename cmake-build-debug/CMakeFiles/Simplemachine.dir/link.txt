@@ -1,3 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2021.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Simplemachine.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe qc CMakeFiles\Simplemachine.dir/objects.a @CMakeFiles\Simplemachine.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\Simplemachine.dir/objects.a -Wl,--no-whole-archive -o Simplemachine.exe -Wl,--out-implib,libSimplemachine.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Simplemachine.dir\linklibs.rsp
