@@ -1,1 +1,0 @@
-/usr/bin/gcc -g CMakeFiles/Simplemachine.dir/main.c.o CMakeFiles/Simplemachine.dir/Simpletron_UI.c.o CMakeFiles/Simplemachine.dir/SML_exe.c.o CMakeFiles/Simplemachine.dir/Recive_instructions.c.o CMakeFiles/Simplemachine.dir/Excute.c.o "CMakeFiles/Simplemachine.dir/Fetch&Decode.c.o" -o Simplemachine 

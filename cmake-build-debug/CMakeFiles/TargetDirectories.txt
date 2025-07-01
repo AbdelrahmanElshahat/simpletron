@@ -1,3 +1,0 @@
-/home/shahat/Desktop/New Folder/simpletron/cmake-build-debug/CMakeFiles/Simplemachine.dir
-/home/shahat/Desktop/New Folder/simpletron/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/shahat/Desktop/New Folder/simpletron/cmake-build-debug/CMakeFiles/rebuild_cache.dir
